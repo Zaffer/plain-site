@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Probe - plain-site specimens</title>
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<p><a href="../index.html">plain-site</a> › probe</p>
+
+<h1>Support probe</h1>
+
+<p>Open this page in any browser. It renders each obsolete feature in a hidden frame and asks
+the browser what it did with it. <b>✓</b> means the feature works here. For the dead
+elements, <b>✓</b> means they are correctly ignored.</p>
+
+<p>※ This page <em>reads</em> computed styles to test the browser. That is a test harness;
+pages built with this guide never touch CSS from script.</p>
+
+<p id="ua"></p>
+
+<table border="1" cellpadding="4" cellspacing="0" id="results">
+<tr bgcolor="#eeeeee"><th>Feature</th><th>Group</th><th>Measured</th><th>OK</th></tr>
+</table>
+
+<p id="summary"></p>
+
+<iframe id="lab" width="600" height="400" hidden title="probe lab" srcdoc='<!doctype html>
+<body bgcolor="#ffeedd" text="#112233" link="#00aa00" marginwidth="40" marginheight="30">
+<a id="lnk" href="#x">link</a>
+<font id="fcolor" color="red" size="7" face="monospace">x</font><font id="frel" size="+2">x</font>
+<font id="chuck" color="chucknorris">x</font>
+<center id="center">x</center>
+<big id="big">x</big><tt id="tt">x</tt><strike id="strike">x</strike><nobr id="nobr">x</nobr>
+<marquee id="marquee" bgcolor="yellow">m</marquee>
+<xmp id="xmp"><b>raw</b></xmp><listing id="listing">x</listing>
+<image id="image" src="data:,">
+<table id="table" border="3" bordercolor="red" cellpadding="9" cellspacing="0" bgcolor="lime" width="300" align="center"><caption id="caption" align="bottom">c</caption>
+<tr><td id="td" bgcolor="aqua" nowrap valign="bottom" align="center" height="50">td</td></tr></table>
+<hr id="hr" color="red" size="8" width="50%" align="left" noshade>
+<p id="palign" align="right">x</p>
+<img id="img" src="data:," align="right" hspace="11" vspace="7" border="4" width="20" height="20">
+<br id="br" clear="all">
+<ul id="ul" type="square"><li>x</li></ul>
+<pre id="pre" wrap>x</pre>
+<fieldset><legend id="legend" align="right">x</legend></fieldset>
+<iframe id="ifr" frameborder="0" src="about:blank"></iframe>
+<blink id="blink">x</blink><spacer id="spacer" type="block" width="50" height="50"></spacer>
+<basefont color="red" size="7"><span id="afterbasefont">x</span>
+<multicol id="multicol" cols="3">x</multicol>
+'></iframe>
+
+<script>
+  const lab = document.getElementById('lab');
+  const table = document.getElementById('results');
+
+  lab.addEventListener('load', () => {
+    const d = lab.contentDocument;
+    const w = lab.contentWindow;
+    const css = (id, prop) => w.getComputedStyle(d.getElementById(id)).getPropertyValue(prop);
+    const tag = (id) => d.getElementById(id).constructor.name;
+
+    // [feature, group, measure(), pass(measured)]
+    const checks = [
+      ['body bgcolor', 'living', () => w.getComputedStyle(d.body).backgroundColor, (v) => v === 'rgb(255, 238, 221)'],
+      ['body text', 'living', () => w.getComputedStyle(d.body).color, (v) => v === 'rgb(17, 34, 51)'],
+      ['body link', 'living', () => css('lnk', 'color'), (v) => v === 'rgb(0, 170, 0)'],
+      ['body marginwidth', 'living', () => w.getComputedStyle(d.body).marginLeft, (v) => v === '40px'],
+      ['font color', 'living', () => css('fcolor', 'color'), (v) => v === 'rgb(255, 0, 0)'],
+      ['font size=7', 'living', () => css('fcolor', 'font-size'), (v) => parseFloat(v) >= 39],
+      ['font size=+2', 'living', () => css('frel', 'font-size'), (v) => v === '24px'],
+      ['font face', 'living', () => css('fcolor', 'font-family'), (v) => v.includes('monospace')],
+      ['legacy colour "chucknorris"', 'living', () => css('chuck', 'color'), (v) => v === 'rgb(192, 0, 0)'],
+      ['center', 'living', () => css('center', 'text-align'), (v) => v.includes('center')],
+      ['big', 'living', () => css('big', 'font-size'), (v) => parseFloat(v) > 16],
+      ['tt', 'living', () => css('tt', 'font-family'), (v) => v.includes('monospace')],
+      ['strike', 'living', () => css('strike', 'text-decoration-line'), (v) => v === 'line-through'],
+      ['nobr', 'living', () => css('nobr', 'white-space'), (v) => v.includes('nowrap')],
+      ['marquee', 'living', () => tag('marquee') + ' ' + css('marquee', 'background-color'), (v) => v === 'HTMLMarqueeElement rgb(255, 255, 0)'],
+      ['xmp (raw text)', 'living', () => d.getElementById('xmp').textContent, (v) => v === '<b>raw</b>'],
+      ['listing', 'living', () => css('listing', 'white-space'), (v) => v === 'pre'],
+      ['<image> becomes <img>', 'living', () => d.getElementById('image').tagName, (v) => v === 'IMG'],
+      ['table bgcolor', 'living', () => css('table', 'background-color'), (v) => v === 'rgb(0, 255, 0)'],
+      ['table bordercolor', 'living', () => css('table', 'border-top-color'), (v) => v === 'rgb(255, 0, 0)'],
+      ['table border=3', 'living', () => css('table', 'border-top-width'), (v) => v === '3px'],
+      ['table cellpadding', 'living', () => css('td', 'padding-top'), (v) => v === '9px'],
+      ['table cellspacing', 'living', () => css('table', 'border-spacing'), (v) => v.startsWith('0px')],
+      ['table width', 'living', () => css('table', 'width'), (v) => v === '300px'],
+      ['table align=center', 'living', () => css('table', 'margin-left'), (v) => v === 'auto' || parseFloat(v) > 0],
+      ['caption align', 'living', () => css('caption', 'caption-side'), (v) => v === 'bottom'],
+      ['td bgcolor', 'living', () => css('td', 'background-color'), (v) => v === 'rgb(0, 255, 255)'],
+      ['td nowrap', 'living', () => css('td', 'white-space'), (v) => v.includes('nowrap')],
+      ['td valign', 'living', () => css('td', 'vertical-align'), (v) => v === 'bottom'],
+      ['td height', 'living', () => css('td', 'height'), (v) => v === '50px'],
+      ['hr color', 'living', () => css('hr', 'border-top-color'), (v) => v === 'rgb(255, 0, 0)'],
+      ['hr width', 'living', () => css('hr', 'width'), (v) => parseFloat(v) > 0 && parseFloat(v) < 600],
+      ['hr align=left', 'living', () => css('hr', 'margin-left'), (v) => v === '0px'],
+      ['p align', 'living', () => css('palign', 'text-align'), (v) => v.includes('right')],
+      ['img align (float)', 'living', () => css('img', 'float'), (v) => v === 'right'],
+      ['img hspace', 'living', () => css('img', 'margin-left'), (v) => v === '11px'],
+      ['img border', 'living', () => css('img', 'border-top-width'), (v) => v === '4px'],
+      ['br clear', 'living', () => css('br', 'clear'), (v) => v === 'both'],
+      ['ul type', 'living', () => css('ul', 'list-style-type'), (v) => v === 'square'],
+      ['pre wrap', 'living', () => css('pre', 'white-space'), (v) => v === 'pre-wrap'],
+      ['legend align', 'living', () => css('legend', 'text-align'), (v) => v === 'right'],
+      ['iframe frameborder=0', 'living', () => css('ifr', 'border-top-width'), (v) => v === '0px'],
+      ['document.bgColor', 'living', () => typeof d.bgColor + ' ' + d.bgColor, (v) => v === 'string #ffeedd'],
+      ['blink', 'dead', () => tag('blink'), (v) => v === 'HTMLUnknownElement'],
+      ['spacer', 'dead', () => css('spacer', 'width'), (v) => v === 'auto'],
+      ['basefont', 'dead', () => css('afterbasefont', 'color'), (v) => v !== 'rgb(255, 0, 0)'],
+      ['multicol', 'dead', () => css('multicol', 'column-count'), (v) => v === 'auto'],
+    ];
+
+    let pass = 0;
+    for (const [name, group, measure, ok] of checks) {
+      let value;
+      try { value = String(measure()); } catch (e) { value = 'error: ' + e.message; }
+      const good = ok(value);
+      if (good) pass++;
+      const row = table.insertRow();
+      row.insertCell().textContent = name;
+      row.insertCell().textContent = group;
+      row.insertCell().textContent = value;
+      const mark = row.insertCell();
+      mark.align = 'center';
+      mark.innerHTML = good ? '<font color="green">✓</font>' : '<font color="red"><b>✗</b></font>';
+    }
+    document.getElementById('summary').textContent = pass + ' of ' + checks.length + ' as expected.';
+  });
+
+  document.getElementById('ua').textContent = 'Browser: ' + navigator.userAgent;
+</script>
+</body>
+</html>

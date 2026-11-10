@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>plain-site</title>
+<meta name="description" content="A house style for websites with no CSS at all: plain HTML, browser defaults, and the presentational attributes browsers still render.">
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<table width="100%" cellpadding="0" cellspacing="0" role="presentation"><tr><td></td><td width="720">
+
+<center>
+<h1>plain-site</h1>
+<p>Websites with no CSS. Like zero stylesheets.</p>
+<p>[ <a href="#specimens" accesskey="s">Specimens</a> ]
+[ <a href="#templates" accesskey="t">Templates</a> ]
+[ <a href="#read" accesskey="r">Read</a> ]</p>
+</center>
+
+<hr noshade size="1">
+
+<h2 id="what"><font color="#b22222">■</font> What this is</h2>
+
+<p>A house style for websites, and the rules for building them. A plain-site page is HTML
+and nothing else: no stylesheet, no <code>style</code> attribute, no CSS from script. It
+looks the way the browser draws HTML, plus the presentational attributes that every browser
+still renders thirty years on: <code>bgcolor</code>, <code>&lt;font&gt;</code>,
+<code>&lt;center&gt;</code>, <code>align</code>, <code>cellpadding</code>.</p>
+
+<p>Why: CSS is where builders go to die, the browser already ships a stylesheet tested on
+every page ever written, and plain HTML still works in any browser, on any screen, in any
+decade. It also looks like nothing a language model would make unprompted. This page is
+built the same way. View its source.</p>
+
+<h2 id="specimens"><font color="#b22222">■</font> Specimens</h2>
+
+<p>A working catalogue of everything the browser draws without CSS. Every example is live:
+edit the source on the left, and the result on the right redraws.</p>
+
+<table border="1" cellpadding="6" cellspacing="0" width="100%">
+<tr bgcolor="#eeeeee"><th align="left">Page</th><th align="left">What is in it</th></tr>
+<tr><td valign="top" nowrap><a href="examples/colour.html" accesskey="1">1. Colour</a></td>
+<td><code>bgcolor</code>, <code>&lt;font color&gt;</code>, <code>&lt;mark&gt;</code>, table
+cells as colour blocks, <code>hr color</code>, tiled wallpaper, the legacy colour parser,
+<code>document.bgColor</code></td></tr>
+<tr><td valign="top" nowrap><a href="examples/type.html" accesskey="2">2. Type</a></td>
+<td>inline elements, headings, <code>&lt;font size face&gt;</code>, <code>lang</code>, ruby,
+glyphs as ornament, <code>&lt;pre&gt;</code> diagrams, <code>&lt;xmp&gt;</code>,
+<code>&lt;nobr&gt;</code></td></tr>
+<tr><td valign="top" nowrap><a href="examples/layout.html" accesskey="3">3. Layout</a></td>
+<td>the measure table (a max-width with no CSS), <code>&lt;center&gt;</code> and
+<code>align</code>, table borders, two-column tables, floating images, indentation, page
+margins</td></tr>
+<tr><td valign="top" nowrap><a href="examples/native.html" accesskey="4">4. Native</a></td>
+<td><code>&lt;fieldset&gt;</code>, <code>&lt;details&gt;</code> accordions,
+<code>&lt;meter&gt;</code> colours, dialogs and popovers with no script, form controls,
+<code>accesskey</code></td></tr>
+<tr><td valign="top" nowrap><a href="examples/museum.html" accesskey="5">5. Museum</a></td>
+<td><code>&lt;marquee&gt;</code>, <code>&lt;frameset&gt;</code>,
+<code>&lt;plaintext&gt;</code>, <code>&lt;image&gt;</code>, and the dead:
+<code>&lt;blink&gt;</code>, <code>&lt;spacer&gt;</code>, <code>&lt;basefont&gt;</code>…</td></tr>
+<tr><td valign="top" nowrap><a href="examples/night.html" accesskey="6">6. Night mode</a></td>
+<td>dark mode from one meta tag, the system vs fixed palette trade-off, a palette switch
+through <code>document.bgColor</code></td></tr>
+<tr><td valign="top" nowrap><a href="examples/probe.html" accesskey="7">7. Probe</a></td>
+<td>47 automatic checks of the obsolete features, run in whatever browser you are using</td></tr>
+</table>
+
+<p><small>※ <kbd>1</kbd>-<kbd>7</kbd> are access keys: <kbd>Alt</kbd>+key in Chrome,
+<kbd>Ctrl</kbd>+<kbd>Option</kbd>+key in Safari.</small></p>
+
+<h2 id="templates"><font color="#b22222">■</font> Templates</h2>
+
+<p>Whole pages to copy. Replace the words, keep the structure.</p>
+
+<table border="1" cellpadding="6" cellspacing="0" width="100%">
+<tr bgcolor="#eeeeee"><th align="left">Template</th><th align="left">For</th></tr>
+<tr><td valign="top" nowrap><a href="templates/home.html">Home page</a></td>
+<td>a small studio or company: what we do, a table of work, a dated log, contact. 5 KB.</td></tr>
+</table>
+
+<h2 id="read"><font color="#b22222">■</font> Read</h2>
+
+<p>The written guide is plain Markdown, served as plain text.</p>
+
+<dl>
+<dt><a href="MANIFESTO.md">MANIFESTO.md</a></dt>
+<dd>The principles, in one list.</dd>
+<dt><a href="README.md">README.md</a></dt>
+<dd>Why, and the rules for building a page.</dd>
+<dt><a href="docs/vocabulary.md">docs/vocabulary.md</a></dt>
+<dd>Every HTML tool that draws without CSS, which still work and which are dead.</dd>
+</dl>
+
+<h2 id="rule"><font color="#b22222">■</font> The rule</h2>
+
+<p>No <code>&lt;style&gt;</code>. No <code>style=""</code>. No <code>.css</code> file. No
+<code>element.style</code> from script. If the browser can't draw it from HTML, the page
+doesn't need it.</p>
+
+<hr noshade size="1">
+
+<p><small>Last updated 2026-11-10 ・ ▲ <a href="#">top</a></small></p>
+
+</td><td></td></tr></table>
+
+</body>
+</html>

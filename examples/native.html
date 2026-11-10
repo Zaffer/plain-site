@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native - plain-site specimens</title>
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<p><a href="../index.html">plain-site</a> › native</p>
+
+<h1>Native components</h1>
+
+<p>The other half of the toolkit is current HTML, not obsolete. These elements come with a
+look and a behaviour built in: boxes, disclosure triangles, coloured gauges, modals, popups.
+Every one of them is keyboard-accessible and screen-reader-labelled by default, which a
+hand-built widget almost never is.</p>
+
+<hr>
+
+<h2 id="fieldset">■ &lt;fieldset&gt;: a box with a title</h2>
+
+<p>The only conforming element that draws a border round its content. It is meant for form
+groups. A <code>&lt;legend&gt;</code> breaks the top edge, and <code>align="right"</code>
+(obsolete) moves it.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<fieldset>
+<legend>Frost alarm</legend>
+<label>Threshold <input type="number" value="2" size="4"> °C</label><br>
+<label>Volume <input type="range" min="0" max="100" value="60"></label>
+</fieldset>
+<p>
+<fieldset><legend align="right">Notice</legend>
+Legend on the right.</fieldset>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="details">■ &lt;details&gt;: show and hide, no script</h2>
+
+<p>Click the summary to open it. Several <code>&lt;details&gt;</code> that share a
+<code>name</code> form an accordion: opening one closes the others. Browser find-in-page
+(<kbd>Ctrl</kbd>+<kbd>F</kbd>) opens the one that holds the match.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<details open>
+<summary>What is a dew point?</summary>
+<p>The temperature at which the air becomes saturated.
+</details>
+<p><b>FAQ</b> (one open at a time):
+<details name="faq"><summary>Is it free?</summary><p>Yes.</details>
+<details name="faq"><summary>Does it run in a browser?</summary><p>Yes.</details>
+<details name="faq"><summary>Does it work offline?</summary><p>Yes.</details>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="meter">■ &lt;meter&gt;: colour that means something</h2>
+
+<p>A gauge that the browser colours itself: green when the value is in the
+<code>optimum</code> region, yellow in the next region, red in the furthest. Set
+<code>low</code>, <code>high</code> and <code>optimum</code> and the colours follow. It is the
+conforming way to show good / bad with colour, and the text beside it carries the meaning.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p>Battery (high is good):
+<p><meter min="0" max="100" low="25" high="60" optimum="100" value="90"></meter> 90 %
+<p><meter min="0" max="100" low="25" high="60" optimum="100" value="45"></meter> 45 %
+<p><meter min="0" max="100" low="25" high="60" optimum="100" value="12"></meter> 12 %
+<p>Latency (low is good):
+<p><meter min="0" max="500" low="80" high="200" optimum="0" value="40"></meter> 40 ms
+<p><meter min="0" max="500" low="80" high="200" optimum="0" value="320"></meter> 320 ms
+<p>Upload: <progress max="100" value="70"></progress> 70 %
+<p>Working: <progress></progress>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="dialog">■ Dialogs and popovers, declaratively</h2>
+
+<p><code>commandfor</code> + <code>command</code> open and close a
+<code>&lt;dialog&gt;</code> with no script. A modal dialog dims the page, traps focus, and
+closes on <kbd>Esc</kbd>. <code>popover</code> + <code>popovertarget</code> makes a light popup
+that closes when you click elsewhere. Both draw a bordered box by default.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<button commandfor="confirm" command="show-modal">🗑 delete log…</button>
+<dialog id="confirm" closedby="any">
+<p>Delete all readings from the North ridge station?
+<form method="dialog">
+<button value="no">✗ cancel</button>
+<button value="yes">🗑 delete</button>
+</form>
+</dialog>
+
+<button popovertarget="info">ⓘ info</button>
+<div id="info" popover>Readings every ten minutes.</div>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" height="240" title="result" data-fixed></iframe></td>
+</tr></table></form>
+
+<p>※ <code>commandfor</code> and <code>closedby</code> are new (they reached all the major engines
+during 2025 and 2026). A browser without them shows a button that does nothing, so check
+your audience, or add a small module fallback.</p>
+
+<h2 id="inputs">■ Form controls: free widgets</h2>
+
+<p>Date pickers, colour pickers, sliders, suggestion lists, validation with error bubbles. All
+native, all drawn by the OS or browser to match the platform.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<form>
+<p><label>Date <input type="date" value="2026-11-09"></label>
+<p><label>Colour <input type="color" value="#b22222"></label>
+<p><label>Field <input list="sites" placeholder="type to see suggestions"></label>
+<datalist id="sites"><option>North field<option>South field<option>Hangar</datalist>
+<p><label>Email <input type="email" required></label>
+<p><label><input type="checkbox" switch> 🔔 alerts</label>
+<p><select><option>Celsius<option>Fahrenheit</select>
+<button>✓ submit</button>
+</form>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="tooltips">■ Tooltips, shortcuts, find-in-page</h2>
+
+<p><code>title</code> gives a hover tooltip. <code>accesskey</code> gives a keyboard shortcut
+(<kbd>Alt</kbd>+key in Chrome, <kbd>Alt</kbd>+<kbd>Shift</kbd>+key in Firefox,
+<kbd>Ctrl</kbd>+<kbd>Option</kbd>+key on a Mac). That is 90s
+practicality: a menu you can drive without a mouse. <code>hidden="until-found"</code> hides a
+section that find-in-page can still reveal.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p>[<a href="#p" accesskey="p" title="Projects (accesskey P)"><u>P</u>rojects</a>]
+[<a href="#l" accesskey="l" title="Log (accesskey L)"><u>L</u>og</a>]
+[<a href="#c" accesskey="c" title="Contact (accesskey C)"><u>C</u>ontact</a>]
+<p><abbr title="Electronic Speed Controller">ESC</abbr> - hover me.
+<div hidden="until-found">Press Ctrl+F and search "secret": this secret line appears.</div>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<hr>
+<p>▲ <a href="#">top</a> ・ <a href="../index.html">plain-site</a> ・ previous: <a href="layout.html">layout</a> ・ next: <a href="museum.html">museum</a></p>
+
+<script src="play.js"></script>
+</body>
+</html>

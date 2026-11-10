@@ -1,0 +1,24 @@
+- form follows function
+- minimalism and simplicity
+- 90s practicality
+- strictly no CSS, like absolutely zero
+- harness attributes and meta tags that give form and color without stylesheets
+- leverage plain HTML to the maximum
+- rely on the browser's rendering defaults
+- low complexity to avoid chaos and bugs
+- low-tech which just works where that's all that's needed
+- supported broadly but without compromising to outdated or irrelevantt browsers
+- any screen size works automatically without customisation unless necessary
+- instant ground truth reactivity to any interaction
+- visible feedback on any processing including requests, loading, pending, failures, etc.
+- latest stable javascript best practices for state management and functionality where appropriate
+- signals for static state and native observables for time-based state
+- built and tested for current Chromium, public sites must also work in for Safari
+- content legible if printed as is or even if just viewing the HTML itself
+- user experience and user interaction must be effortless and intuitive
+- native controls for their intended purpose, based on physical intuition
+- each button does one thing
+- only essential dependencies and 14600 bytes compressed if doable for TCP optimisation
+- follow standards where sensical with explicit exceptions
+- glyphs and emoji next to words where useful to reduce cognitive load
+- positive signal from human craftedness, versus artificially intelligent generation

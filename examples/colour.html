@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colour - plain-site specimens</title>
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<p><a href="../index.html">plain-site</a> › colour</p>
+
+<h1>Colour without CSS</h1>
+
+<p>Every box below is live. Edit the source on the left and the page on the right redraws.
+The ↺ reset button puts the source back. Each result is a whole page in an
+iframe, so <code>&lt;body&gt;</code> attributes work there without touching this page.</p>
+
+<p>※ Everything here is an HTML attribute or element. The browser converts some of them into
+style internally (the spec calls them <i>presentational hints</i>). That is the browser's
+business, not ours: we write no CSS.</p>
+
+<hr>
+
+<h2 id="body">■ The whole page: &lt;body&gt;</h2>
+
+<p><code>bgcolor</code> paints the page, <code>text</code> sets the default text colour,
+<code>link</code> / <code>vlink</code> / <code>alink</code> set the colour of unvisited,
+visited and active (mouse-down) links. These five attributes are a complete page theme.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<body bgcolor="#fdf6e3" text="#3b3b3b"
+      link="#b22222" vlink="#6b4c9a" alink="#ff8c00">
+<h1>Ink on paper</h1>
+<p>Five attributes on the body tag theme the whole page.
+<p><a href="#">An unvisited link</a> - hold the mouse
+down on it to see <code>alink</code>.
+</body>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="font">■ Words: &lt;font color&gt;</h2>
+
+<p><code>&lt;font&gt;</code> is obsolete, but the spec still tells every browser exactly how to
+draw it, and the DOM still has <code>HTMLFontElement</code>. A <code>&lt;font&gt;</code>
+inside a link overrides the link colour.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p>Status: <font color="green">● running</font>,
+<font color="#c00">● 2 errors</font>,
+<font color="gray">● idle</font>.
+
+<p><font color="red">【重要】</font> Maintenance on Saturday.
+
+<p><a href="#"><font color="purple">a purple link</font></a>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="mark">■ Highlight: &lt;mark&gt;</h2>
+
+<p>The one <em>conforming</em> element that paints a background. It uses the system
+highlight colours, so it stays readable in dark mode too.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p>Search results for "tide":
+<p>High and low <mark>tide</mark> times for the next
+seven days, for every harbour on the coast.
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="blocks">■ Blocks of colour: table cells</h2>
+
+<p>Without CSS, the only way to colour a <em>region</em> is a table, a row or a cell with
+<code>bgcolor</code>. This is how every 1998 header bar was made. <code>cellpadding</code> is
+the padding, <code>cellspacing</code> the gap.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<table width="100%" bgcolor="navy" cellpadding="8" cellspacing="0">
+<tr><td><font color="white" size="5"><b>EXAMPLE STUDIO</b></font></td>
+    <td align="right"><font color="#aaccff">Est. 1998</font></td></tr>
+</table>
+
+<p>Swatches:
+<table cellspacing="4" cellpadding="12"><tr>
+<td bgcolor="#264653"></td><td bgcolor="#2a9d8f"></td>
+<td bgcolor="#e9c46a"></td><td bgcolor="#f4a261"></td>
+<td bgcolor="#e76f51"></td>
+</tr></table>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="hr">■ Lines: &lt;hr color&gt;</h2>
+
+<p><code>color</code>, <code>size</code> (thickness), <code>width</code>, <code>align</code>
+and <code>noshade</code> (flat instead of grooved).</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<hr>
+<hr noshade>
+<hr color="crimson" size="4">
+<hr color="navy" size="1" width="50%" align="left">
+<hr color="#ccc" size="12" width="80">
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="tile">■ Wallpaper: &lt;body background&gt;</h2>
+
+<p>A tiled background image, as on every GeoCities page. Here the tile is an 8×8 GIF of 66
+bytes, inlined as a data URI. <code>background</code> also works on <code>&lt;table&gt;</code>,
+<code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code>.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<body background="data:image/gif;base64,R0lGODdhCAAIAIEAAP///+7u7gAAAAAAACwAAAAACAAIAAAIGwABCAQQoGCAgQQNIjR4cCBDhgsVOpQoEOLAgAA7">
+<h2>Check</h2>
+<table background="data:image/gif;base64,R0lGODdhBAAEAIEAAPv48Oji1AAAAAAAACwAAAAABAAEAAAICQADABhIsKDBgAA7"
+       border="1" cellpadding="16"><tr><td>washi paper cell</td></tr></table>
+</body>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="legacy">■ The legacy colour parser</h2>
+
+<p>Colour attributes are parsed by the <i>rules for parsing a legacy colour value</i>, a
+1990s algorithm still written into the spec. It accepts CSS colour names, <code>#rgb</code>,
+<code>#rrggbb</code>, hex <em>without</em> the <code>#</code>, and anything else: non-hex
+characters become <code>0</code>, the string is split into three parts, and each part is
+truncated. So every word is a colour. <code>chucknorris</code> is a dark red.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<table border="1" cellpadding="6">
+<tr><td bgcolor="chucknorris">&amp;nbsp;</td><td>chucknorris</td></tr>
+<tr><td bgcolor="ninja">&amp;nbsp;</td><td>ninja</td></tr>
+<tr><td bgcolor="sick">&amp;nbsp;</td><td>sick</td></tr>
+<tr><td bgcolor="crap">&amp;nbsp;</td><td>crap</td></tr>
+<tr><td bgcolor="nocss">&amp;nbsp;</td><td>nocss</td></tr>
+<tr><td bgcolor="ff6600">&amp;nbsp;</td><td>ff6600 (no #)</td></tr>
+<tr><td bgcolor="rebeccapurple">&amp;nbsp;</td><td>rebeccapurple</td></tr>
+</table>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<p>※ Fun, but write real hex codes. A colour should be readable by the next person.</p>
+
+<h2 id="js">■ From JavaScript: document.bgColor</h2>
+
+<p>The DOM still carries the Netscape-era properties <code>document.bgColor</code>,
+<code>fgColor</code>, <code>linkColor</code>, <code>vlinkColor</code> and
+<code>alinkColor</code>. They read and write the <code>&lt;body&gt;</code> attributes, so a
+theme switch needs no CSS at all. See <a href="night.html">night mode</a> for a complete one.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p>
+<button onclick="document.bgColor='#111'; document.fgColor='#ddd'; document.linkColor='#8cf'">☾ night</button>
+<button onclick="document.bgColor='#fff'; document.fgColor='#000'; document.linkColor='#00e'">☀ day</button>
+<p>Some text and <a href="#">a link</a>.
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<p>※ Inline <code>onclick</code> is fine for a toy. Real pages attach listeners from a module.</p>
+
+<hr>
+<p>▲ <a href="#">top</a> ・ <a href="../index.html">plain-site</a> ・ next: <a href="type.html">type</a></p>
+
+<script src="play.js"></script>
+</body>
+</html>

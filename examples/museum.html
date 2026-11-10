@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Museum - plain-site specimens</title>
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<p><a href="../index.html">plain-site</a> › museum</p>
+
+<h1>The museum</h1>
+
+<p>Obsolete elements fall into two groups. The <b>living fossils</b> are out of the spec for
+authors, but the spec still tells browsers how to render them, so every engine does. The
+<b>dead</b> were never in a spec or were removed from the engines. Browsers now treat them as
+unknown elements with no effect. Know which is which.</p>
+
+<hr>
+
+<h2 id="marquee">■ Living: &lt;marquee&gt;</h2>
+
+<p>Netscape's rival to <code>&lt;blink&gt;</code>, from Internet Explorer 2. It is still
+supported in Chrome, Firefox and Safari, as <code>HTMLMarqueeElement</code>, with
+<code>behavior</code> (<code>scroll</code> / <code>slide</code> / <code>alternate</code>),
+<code>direction</code>, <code>scrollamount</code> (px per step), <code>scrolldelay</code>,
+<code>loop</code>, <code>bgcolor</code>, <code>width</code>, <code>height</code>, and
+<code>start()</code> / <code>stop()</code> methods.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<marquee bgcolor="#ffffcc">ようこそ ★ Welcome to our home page ★ ようこそ</marquee>
+<marquee behavior="alternate" scrollamount="3">◀ alternate ▶</marquee>
+<marquee behavior="slide" loop="1">slides in once and stops</marquee>
+<marquee direction="up" height="60" scrollamount="1">
+↑ up<br>news ticker<br>2026.11.09 site opened</marquee>
+<p><marquee id="m" width="200">stoppable</marquee>
+<button onclick="m.stop()">⏸ stop</button>
+<button onclick="m.start()">▶ start</button>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<p>※ Moving text that runs for more than five seconds must have a way to pause it (WCAG
+2.2.2). Use it as a joke, or give it a stop button. Never use it for anything a reader needs.</p>
+
+<h2 id="frames">■ Living: &lt;frameset&gt;</h2>
+
+<p>Frames still work in every browser. A <code>&lt;frameset&gt;</code> replaces the
+<code>&lt;body&gt;</code> and splits the window into separately scrolling documents. A link
+with <code>target</code> loads into a named frame. <a href="frames/index.html">Open the frames
+demo</a> (a whole window), or play with it below.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<frameset cols="160,*" border="1">
+  <frame src="frames/nav.html" name="nav">
+  <frame src="frames/main.html" name="main">
+</frameset>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" height="260" title="result" data-fixed></iframe></td>
+</tr></table></form>
+
+<p>※ Why frames died: the address bar shows the frameset, not the page you are reading, so
+links, bookmarks and the back button stop meaning what people expect. A trap. Admire it.</p>
+
+<h2 id="plaintext">■ Living: &lt;plaintext&gt;</h2>
+
+<p>The parser treats everything after <code>&lt;plaintext&gt;</code> as raw text, to the end of
+the file. There is no closing tag: the parser never leaves that state. (This demo is safe
+because it runs in its own frame.)</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p>Normal <b>HTML</b> up to here.
+<plaintext>
+<p>Everything from here on is <b>text</b>.
+</plaintext> <- not even this closes it.
+<script>alert('never runs')</script>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="image">■ Living, sort of: &lt;image&gt;</h2>
+
+<p>A parser quirk: the HTML parser rewrites <code>&lt;image&gt;</code> to
+<code>&lt;img&gt;</code> as it reads, because enough 1990s pages wrote it. Inspect the
+result: the DOM holds an <code>IMG</code>.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<image src="data:image/gif;base64,R0lGODdhCAAIAIEAAP///+7u7gAAAAAAACwAAAAACAAIAAAIGwABCAQQoGCAgQQNIjR4cCBDhgsVOpQoEOLAgAA7"
+       width="48" height="48" border="1" alt="">
+<p id="out"></p>
+<script>out.textContent = 'tag name: ' + document.images[0].tagName</script>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="dead">■ Dead</h2>
+
+<p>None of these does anything in a current browser. Each line below should look plain.
+Don't use them: they are not obsolete-but-working, they are gone.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p><blink>blink</blink> - Netscape. Removed (Firefox 23, 2013).
+<p>a<spacer type="horizontal" size="80">b - spacer: Netscape only.
+<basefont color="red" size="7">
+<p>basefont - should be huge and red. It isn't.
+<multicol cols="3">multicol - Netscape's columns. One column.</multicol>
+<p><layer bgcolor="yellow">layer</layer> - Netscape 4 only.
+<bgsound src="tune.mid" loop="infinite">
+<p>bgsound - Internet Explorer's background music. Silent.
+<p>isindex, keygen, applet, nextid: removed too.
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<p>※ Checked in Chrome 155: <code>blink</code>, <code>spacer</code>, <code>multicol</code> and
+<code>layer</code> parse as <code>HTMLUnknownElement</code>, and <code>basefont</code> changes
+nothing. Open <a href="probe.html">the probe</a> in any browser to check it there.</p>
+
+<hr>
+<p>▲ <a href="#">top</a> ・ <a href="../index.html">plain-site</a> ・ previous: <a href="native.html">native</a> ・ next: <a href="night.html">night mode</a></p>
+
+<script src="play.js"></script>
+</body>
+</html>

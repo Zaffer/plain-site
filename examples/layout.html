@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layout - plain-site specimens</title>
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<p><a href="../index.html">plain-site</a> › layout</p>
+
+<h1>Layout without CSS</h1>
+
+<p>The default layout is one column, top to bottom, in source order. That is the right layout
+for almost every page, and it is already responsive. Everything below is for the few cases
+where it isn't enough. Reach for it last.</p>
+
+<hr>
+
+<h2 id="measure">■ The measure table (a max-width without CSS)</h2>
+
+<p>The one real cost of zero CSS: on a wide monitor, text runs edge to edge and long lines are
+hard to read. A plain <code>&lt;table width="640"&gt;</code> fixes the desktop but overflows a
+phone. This does both: a full-width table with an empty cell either side of a
+<code>width="640"</code> cell. On a wide window the middle cell is 640px and centred. On a
+narrow one the empty cells collapse and the text cell shrinks to fit, with no sideways
+scroll. Drop the first empty cell to align left instead.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+<tr><td></td><td width="320">
+<h3>Centred, 320px max</h3>
+<p>Drag the window narrower. The column shrinks with it,
+but never grows past its width on a wide screen.
+</td><td></td></tr>
+</table>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<p>※ Measured in Chrome 155: at a 1400px viewport the cell is 640px. At 500px it is 484px and
+the page has no horizontal scroll. <code>role="presentation"</code> tells screen readers it is
+not a data table.</p>
+
+<h2 id="align">■ Alignment: &lt;center&gt; and align</h2>
+
+<p><code>&lt;center&gt;</code> centres text and the blocks inside it, tables included.
+<code>align</code> on <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code> and headings takes
+<code>left</code>, <code>right</code>, <code>center</code>, <code>justify</code>.
+<code>&lt;div align="center"&gt;</code> centres child tables too.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<center>
+<h2>Centred heading</h2>
+<table border="1" cellpadding="4"><tr><td>a centred table</td></tr></table>
+</center>
+<p align="right">Right-aligned paragraph.
+<h3 align="center">align="center" heading</h3>
+<p align="justify">Justified text stretches every line except
+the last to fill the width, like a newspaper column, and like
+a lot of printed Japanese.
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="tables">■ Tables: borders, padding, spacing</h2>
+
+<p><code>border</code> (width in px, bevelled), <code>bordercolor</code> (flat, one colour),
+<code>cellpadding</code>, <code>cellspacing</code> (0 joins the cell borders),
+<code>width</code>, <code>height</code>, <code>align</code> / <code>valign</code> on cells,
+<code>nowrap</code>, <code>colspan</code> / <code>rowspan</code>. <code>frame</code> and
+<code>rules</code> choose which edges get lines.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<table border="1" cellpadding="6" cellspacing="0">
+<caption>Stations</caption>
+<tr bgcolor="#eeeeee"><th>Station</th><th>Sensor</th><th align="right">Altitude</th></tr>
+<tr><td>North ridge</td><td>BME280</td><td align="right">412 m</td></tr>
+<tr><td>Harbour</td><td>SHT45</td><td align="right">6 m</td></tr>
+<tr><td colspan="3" align="center"><small>※ example data</small></td></tr>
+</table>
+<br>
+<table border="4" cellpadding="6"><tr><td>border=4</td><td>bevelled</td></tr></table>
+<br>
+<table border="2" bordercolor="navy" cellpadding="6"><tr><td>bordercolor</td><td>flat</td></tr></table>
+<br>
+<table border="1" frame="hsides" rules="rows" cellpadding="6">
+<tr><td>frame="hsides"</td></tr><tr><td>rules="rows"</td></tr><tr><td>ruled list</td></tr></table>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="columns">■ Two columns: the layout table</h2>
+
+<p>The 1998 page: navigation on the left, content on the right. Use it sparingly. On a phone
+the columns stay side by side, so keep the narrow one very narrow, or put it on top instead.
+<code>valign="top"</code> on the cells, or content floats to the vertical middle.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<table width="100%" cellpadding="8" cellspacing="0" role="presentation">
+<tr>
+<td valign="top" width="110" bgcolor="#f0f0e8" nowrap>
+<b>MENU</b><br>
+<a href="#">Home</a><br>
+<a href="#">Projects</a><br>
+<a href="#">Log</a><br>
+<a href="#">Contact</a>
+</td>
+<td valign="top">
+<h3>Welcome</h3>
+<p>The content column takes all the remaining width.
+</td>
+</tr>
+</table>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="float">■ Images beside text: img align</h2>
+
+<p><code>align="left"</code> / <code>"right"</code> floats an image so text wraps round it.
+<code>hspace</code> / <code>vspace</code> add a gap. <code>&lt;br clear="all"&gt;</code> drops
+below the image. The other values (<code>top</code>, <code>middle</code>,
+<code>bottom</code>) line it up inside a line of text.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<img src="data:image/gif;base64,R0lGODdhCAAIAIEAAP///+7u7gAAAAAAACwAAAAACAAIAAAIGwABCAQQoGCAgQQNIjR4cCBDhgsVOpQoEOLAgAA7"
+     width="80" height="80" align="left" hspace="10" vspace="4" border="1" alt="">
+<p>This paragraph wraps round the image on its left. The image is a
+66-byte GIF drawn at 80×80. hspace keeps the text off it.
+<br clear="all">
+<p>This one starts below, because of br clear="all".
+<p>Inline: before <img src="data:image/gif;base64,R0lGODdhCAAIAIEAAP///+7u7gAAAAAAACwAAAAACAAIAAAIGwABCAQQoGCAgQQNIjR4cCBDhgsVOpQoEOLAgAA7"
+     width="24" height="24" align="middle" border="1" alt=""> after
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="indent">■ Indentation: lists, blockquote, dl</h2>
+
+<p>Every browser indents <code>&lt;blockquote&gt;</code>, <code>&lt;dd&gt;</code>, and lists
+by 40px. Nesting is the indent system. Lists take <code>type</code>: <code>disc</code> /
+<code>circle</code> / <code>square</code> on <code>&lt;ul&gt;</code> (obsolete), and
+<code>1 a A i I</code> on <code>&lt;ol&gt;</code> (conforming), plus <code>start</code> and
+<code>reversed</code>.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<ul type="square">
+  <li>Square bullets
+  <ul type="circle"><li>circle inside</li></ul>
+</ul>
+<ol type="I"><li>Roman<li>numerals</ol>
+<ol reversed start="3"><li>three<li>two<li>one</ol>
+<dl>
+  <dt><b>Dew point</b>
+  <dd>The temperature at which the air becomes saturated.
+</dl>
+<blockquote>A quoted passage sits indented on both sides.</blockquote>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="margins">■ Page margins</h2>
+
+<p>The default page margin is 8px. <code>marginwidth</code> / <code>marginheight</code>
+(Netscape) and <code>leftmargin</code> / <code>topmargin</code> (Internet Explorer) on
+<code>&lt;body&gt;</code> both still work. Set them to 0 for edge-to-edge header bars.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<body marginwidth="0" marginheight="0">
+<table width="100%" bgcolor="black" cellpadding="6"><tr><td>
+<font color="white">Edge to edge</font></td></tr></table>
+<p>&amp;nbsp;Body margins are zero.
+</body>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<hr>
+<p>▲ <a href="#">top</a> ・ <a href="../index.html">plain-site</a> ・ previous: <a href="type.html">type</a> ・ next: <a href="native.html">native</a></p>
+
+<script src="play.js"></script>
+</body>
+</html>

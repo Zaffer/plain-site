@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Type - plain-site specimens</title>
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<p><a href="../index.html">plain-site</a> › type</p>
+
+<h1>Type without CSS</h1>
+
+<p>The browser ships a complete typographic system: six heading levels, a dozen inline
+elements that each look different, monospace, quotation marks that follow the language, and
+furigana. Before reaching for <code>&lt;font&gt;</code>, use the element that <em>means</em>
+the thing. It renders differently because it is different.</p>
+
+<hr>
+
+<h2 id="semantic">■ Inline elements that look like something</h2>
+
+<p>All of these are current, conforming HTML. Each has a default rendering in every browser.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p><b>b</b> <strong>strong</strong> <i>i</i> <em>em</em>
+<u>u</u> <s>s</s> <small>small</small> <mark>mark</mark>
+<p>H<sub>2</sub>O, E = mc<sup>2</sup>, x<sub>i</sub><sup>n</sup>
+<p>Press <kbd>Ctrl</kbd>+<kbd>K</kbd>. Run <code>uv sync</code>.
+The output was <samp>OK 3 passed</samp>. Let <var>n</var> be 5.
+<p><cite>The Art of Unix Programming</cite> says
+<q>rule of simplicity</q>. A <dfn>signal</dfn> is a function.
+<abbr title="HyperText Markup Language">HTML</abbr> is the whole page.
+<p><del>$40</del> <ins>$25</ins>
+<address>Example Studio<br>1 Example Street</address>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="headings">■ Headings</h2>
+
+<p>h1 is 2em, h6 is 0.67em. Since 2025 browsers no longer shrink an <code>&lt;h1&gt;</code>
+nested inside <code>&lt;section&gt;</code> or <code>&lt;article&gt;</code>, so the level you
+write is the size you get.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<h1>h1 Heading</h1>
+<h2>h2 Heading</h2>
+<h3>h3 Heading</h3>
+<h4>h4 Heading</h4>
+<h5>h5 Heading</h5>
+<h6>h6 Heading</h6>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="font-size">■ &lt;font size&gt; and &lt;big&gt;</h2>
+
+<p><code>size</code> takes 1 to 7 (3 is normal) or a relative <code>+n</code> /
+<code>-n</code>. <code>&lt;big&gt;</code> is the obsolete twin of <code>&lt;small&gt;</code>.
+Both are obsolete and both still render everywhere.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<font size="1">1</font>
+<font size="2">2</font>
+<font size="3">3</font>
+<font size="4">4</font>
+<font size="5">5</font>
+<font size="6">6</font>
+<font size="7">7</font>
+<p>normal <big>big</big> <big><big>bigger</big></big>
+<small>small</small>
+<p><font size="+2">+2</font> and <font size="-1">-1</font>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="face">■ &lt;font face&gt;</h2>
+
+<p><code>face</code> is a font list, like <code>font-family</code>. The generic names always
+resolve to <em>something</em> on every system. Named fonts only work where they are
+installed, so always end the list with a generic.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p><font face="serif">serif: the browser's default</font>
+<p><font face="sans-serif">sans-serif</font>
+<p><font face="monospace">monospace</font> and <tt>tt</tt>
+<p><font face="system-ui">system-ui: the OS's own UI font</font>
+<p><font face="cursive">cursive</font>
+<p><font face="fantasy">fantasy</font>
+<p><font face="Georgia, serif">Georgia, serif</font>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="lang">■ lang: the font switch nobody uses</h2>
+
+<p>The <code>lang</code> attribute changes rendering. With <code>lang="ja"</code> the browser
+picks a Japanese font for CJK text (otherwise it may fall back to Chinese forms of the same
+characters), and <code>&lt;q&gt;</code> uses 「」 brackets instead of “”.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p lang="en"><q>quoted</q> 直 骨 化</p>
+<p lang="ja"><q>引用</q> 直 骨 化</p>
+<p lang="zh-CN"><q>引用</q> 直 骨 化</p>
+<p lang="fr"><q>citation</q></p>
+<p lang="de"><q>Zitat</q></p>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="ruby">■ Ruby: furigana and glosses</h2>
+
+<p><code>&lt;ruby&gt;</code> puts small text above characters. Built for Japanese reading
+aids, it works for any annotation. <code>&lt;rp&gt;</code> holds the parentheses that show
+only in browsers without ruby support.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p lang="ja"><font size="6">
+<ruby>単<rp>(</rp><rt>たん</rt><rp>)</rp>純<rp>(</rp><rt>じゅん</rt><rp>)</rp></ruby>
+</font>
+<p><ruby>HTML<rp>(</rp><rt>hypertext markup language</rt><rp>)</rp></ruby>
+is all a page needs.
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="glyphs">■ Glyphs are the ornaments</h2>
+
+<p>Japanese web pages decorate with typography, not images: section marks, brackets, notes,
+arrows. They are text, so they are free, they scale, they copy and paste, and they read the
+same with styles off. Keep a glyph next to a word, never instead of it.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p>■ Section □ open ◆ item ◇ sub-item ● on ○ off
+<p>【News】 「quoted title」 『book title』
+<p>※ Note: prices exclude tax.
+<p>→ next ← back ▲ top ▼ more ▶ play ⏹ stop
+<p>★ ☆ ✓ ✗ ・ ‥ … ― 〒 ℡ ☎ ✉
+<p>2026.11.09 ｜ Updated ｜ <font color="red">NEW!</font>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="pre">■ &lt;pre&gt;: the oldest layout engine</h2>
+
+<p>Preformatted text keeps every space and line break. Box-drawing characters turn it into
+diagrams, tables, and banners that survive copy-paste into an email or a terminal.
+<code>&lt;pre wrap&gt;</code> (obsolete) wraps long lines.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<pre>
+┌──────────┐     ┌──────────┐     ┌──────────┐
+│ sensor   │────>│ logger   │────>│ web page │
+│ every 10m│     │ one file │     │ HTML     │
+└──────────┘     └──────────┘     └──────────┘
+
+  Station      Temp    Humidity
+  ──────────   ─────   ────────
+  North ridge  12.4 C  81 %
+  Harbour      15.1 C  88 %
+</pre>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="xmp">■ &lt;xmp&gt;: code samples with no escaping</h2>
+
+<p><code>&lt;xmp&gt;</code> is obsolete, and it is the most useful obsolete element for a
+documentation site. Its content is raw text: tags inside it are shown, not parsed, so you
+paste HTML in and never write <code>&amp;lt;</code>. The only thing it cannot contain is its
+own closing tag. <code>&lt;listing&gt;</code> renders like <code>&lt;pre&gt;</code> but does
+parse tags.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<p>Pasted straight in:
+<xmp><table bgcolor="navy">
+  <tr><td><font color="white">Hello</font></td></tr>
+</table></xmp>
+<p>Compare <code>&lt;pre&gt;</code>, which parses it:
+<pre><b>bold</b> & <i>italic</i></pre>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="nobr">■ Keeping words together</h2>
+
+<p><code>&lt;nobr&gt;</code> (obsolete) never breaks its content. <code>&lt;wbr&gt;</code>
+(conforming) marks where a long word <em>may</em> break. <code>&amp;nbsp;</code> glues two
+words.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<table width="180" border="1"><tr><td>
+Call <nobr>012-345-6789</nobr> today.
+<hr>
+super<wbr>cali<wbr>fragilistic<wbr>expialidocious
+<hr>
+Version 0.5.5&amp;nbsp;released
+</td></tr></table>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<hr>
+<p>▲ <a href="#">top</a> ・ <a href="../index.html">plain-site</a> ・ previous: <a href="colour.html">colour</a> ・ next: <a href="layout.html">layout</a></p>
+
+<script src="play.js"></script>
+</body>
+</html>

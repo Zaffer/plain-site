@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Night mode - plain-site specimens</title>
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<p><a href="../index.html">plain-site</a> › night mode</p>
+
+<h1>Night mode without CSS</h1>
+
+<fieldset>
+<legend>Theme for this page</legend>
+<label><input type="radio" name="scheme" value="light dark" checked> ◐ follow system</label>
+<label><input type="radio" name="scheme" value="light"> ☀ day</label>
+<label><input type="radio" name="scheme" value="dark"> ☾ night</label>
+</fieldset>
+
+<p>This page has a dark mode, and it contains no colour at all. One line in the
+<code>&lt;head&gt;</code> does it:</p>
+
+<xmp><meta name="color-scheme" content="light dark"></xmp>
+
+<p>It tells the browser that the page is fine with either scheme. The browser then follows the
+operating system: a dark background, light text, light links, and dark form controls and
+scrollbars, all from the browser's own palette. The switch above only changes that
+<code>content</code> attribute. It writes one HTML attribute and nothing else, and it remembers
+your choice in <code>localStorage</code>.</p>
+
+<p><a href="#">A link</a> ・ <mark>marked text</mark> ・ <button>a button</button> ・
+<input value="an input"> ・ <meter value="0.7"></meter></p>
+
+<hr>
+
+<h2 id="tradeoff">■ The one trade-off</h2>
+
+<p>Colours you set yourself do <em>not</em> adapt. A <code>&lt;font color="navy"&gt;</code>
+that is readable on white is invisible on the dark background, and a
+<code>bgcolor="#eeeeee"</code> table row turns into a bright stripe under light text. So every
+site makes one choice:</p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+<tr><th></th><th>System palette</th><th>Fixed palette</th></tr>
+<tr><td>How</td><td><code>&lt;meta name="color-scheme" content="light dark"&gt;</code>, no colour
+attributes</td><td><code>bgcolor</code>, <code>text</code>, <code>&lt;font color&gt;</code>; no
+color-scheme meta</td></tr>
+<tr><td>Dark mode</td><td>free, automatic</td><td>none, or a hand-written switch (below)</td></tr>
+<tr><td>Colour you may use</td><td>links, <code>&lt;mark&gt;</code>, <code>&lt;meter&gt;</code>,
+form controls (they adapt)</td><td>anything</td></tr>
+<tr><td>Looks like</td><td>a document</td><td>a 1998 home page</td></tr>
+</table>
+
+<h2 id="see">■ See it: the meta tag in a frame</h2>
+
+<p>Here the meta tag says <code>dark</code> only, so the frame is dark whatever your system
+says. Change it to <code>light</code>. Then add <code>&lt;font color="navy"&gt;</code> around
+the text and switch back to see the trade-off.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<meta name="color-scheme" content="dark">
+<h3>Night</h3>
+<p>Text, <a href="#">a link</a>, <mark>mark</mark>,
+<button>button</button> <input type="checkbox" checked>
+<select><option>select</select>
+<p><meter min="0" max="10" low="3" high="7" optimum="10" value="8"></meter>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="fixed">■ A fixed palette with its own switch</h2>
+
+<p>If the site uses fixed colours, the night version is a second fixed palette, swapped with
+<code>document.bgColor</code> and friends. Those properties write the
+<code>&lt;body&gt;</code> attributes, so it is still all HTML. Each palette is one object.</p>
+
+<form data-play><table width="100%" cellpadding="4" role="presentation"><tr>
+<td valign="top" width="50%"><textarea cols="64" spellcheck="false" wrap="off" aria-label="source">
+<body bgcolor="#fdf6e3" text="#3b3b3b" link="#b22222" vlink="#6b4c9a">
+<p><label><input type="radio" name="p" value="paper" checked> 紙 paper</label>
+<label><input type="radio" name="p" value="ink"> 墨 ink</label>
+<h3>Two fixed palettes</h3>
+<p>Some text and <a href="#">a link</a>.
+<script>
+const palettes = {
+  paper: { bgColor: '#fdf6e3', fgColor: '#3b3b3b', linkColor: '#b22222', vlinkColor: '#6b4c9a' },
+  ink:   { bgColor: '#1d1f21', fgColor: '#d8d8d0', linkColor: '#f08c8c', vlinkColor: '#c0a8e8' },
+};
+document.addEventListener('change', (e) => {
+  if (e.target.name === 'p') Object.assign(document, palettes[e.target.value]);
+});
+</script>
+</body>
+</textarea><br><button type="reset">↺ reset</button></td>
+<td valign="top"><iframe width="100%" title="result"></iframe></td>
+</tr></table></form>
+
+<h2 id="chrome">■ The browser's own toolbar: theme-color</h2>
+
+<p><code>&lt;meta name="theme-color" content="#1d1f21"&gt;</code> tints the browser's toolbar
+and address bar on Android, in Safari, and in installed web apps. It is one more colour that
+needs no CSS.</p>
+
+<hr>
+<p>▲ <a href="#">top</a> ・ <a href="../index.html">plain-site</a> ・ previous: <a href="museum.html">museum</a> ・ next: <a href="probe.html">probe</a></p>
+
+<script>
+  // The theme switch: one radio group, one attribute, one stored string.
+  const meta = document.querySelector('meta[name="color-scheme"]');
+  const radios = document.querySelectorAll('input[name="scheme"]');
+
+  const apply = (value) => {
+    meta.content = value;
+    for (const r of radios) r.checked = r.value === value;
+  };
+
+  try {
+    const saved = localStorage.getItem('scheme');
+    if (saved) apply(saved);
+  } catch {}
+
+  for (const r of radios) {
+    r.addEventListener('change', () => {
+      apply(r.value);
+      try { localStorage.setItem('scheme', r.value); } catch {}
+    });
+  }
+</script>
+<script src="play.js"></script>
+</body>
+</html>
