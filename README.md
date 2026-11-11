@@ -1,12 +1,8 @@
 # plain-site
 
-A house style for websites, and the rules for building them. It has no stylesheet, because it
-is the absence of one.
+A minimal styleless design for websites. View the examples and museum: [https://zaffer.github.io/plain-site/](https://zaffer.github.io/plain-site/)
 
-**Live site:** open [index.html](index.html), the root page, which links to every specimen and
-template. The repo is the site: GitHub Pages serves it as is, from the root of `main`.
-
-**Read:** [MANIFESTO.md](MANIFESTO.md) (the principles) ・ this README (why, and the rules) ・
+**Read:** [MANIFESTO.md](MANIFESTO.md) (the principles) ・ this README (why, and the guides) ・
 [docs/vocabulary.md](docs/vocabulary.md) (everything HTML can draw without CSS)
 
 Sister project: [plainpanel](https://github.com/Zaffer/plainpanel), for the interactive
@@ -15,7 +11,7 @@ allows no CSS at all.
 
 ## Why
 
-**CSS is where websites go wrong.** It is a second language, layered over HTML, with its own
+**CSS is where web went wrong.** It is a second language, layered over HTML, with its own
 cascade, specificity, inheritance, stacking contexts, and a thousand properties that interact.
 Every rule is global and every change can break something far away. Each framework built to
 tame it adds another layer. Complexity invites chaos and bugs, so we remove the layer.
