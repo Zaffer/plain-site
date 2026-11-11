@@ -21,4 +21,6 @@
 - only essential dependencies and 14600 bytes compressed if doable for TCP optimisation
 - follow standards where sensical with explicit exceptions
 - glyphs and emoji next to words where useful to reduce cognitive load
+- less is more, and in general the less actual code the better
+- write artisanal code has if crafted by a human being deliberate with every line
 - positive signal from human craftedness, versus artificially intelligent generation
