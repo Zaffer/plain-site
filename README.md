@@ -46,9 +46,10 @@ produce a page in Times New Roman with blue underlined links, `<font>` tags, a b
 table, and a dated changelog. That is the point. A plain-site page reads as made by a person
 who chose every element on purpose, and it does not resemble anything else.
 
-## The rules (draft)
+## The guide (draft)
+\[ defer to MANIFESTO.md for ultimate opinion \]
 
-### 1. No CSS. None.
+### 1. No CSS.
 
 - No `<style>` element, no `style=""` attribute, no `.css` file, no `<link rel="stylesheet">`.
 - No CSS from script: no `element.style`, no `classList` used for looks, no CSSOM, no
@@ -61,7 +62,7 @@ who chose every element on purpose, and it does not resemble anything else.
 
 ### 2. Use the browser's defaults first
 
-Reach for things in this order, and stop at the first that works:
+Reach for things in this order, until it works for you:
 
 1. **Plain structure.** Headings, paragraphs, lists, `<hr>`, one column in source order.
 2. **Meaningful elements** that already look different: `<mark>`, `<kbd>`, `<code>`,
@@ -73,58 +74,54 @@ Reach for things in this order, and stop at the first that works:
 
 ### 3. One column, source order
 
-The default flow is the layout, and it is already responsive. Constrain line length with the
+The default flow is the layout, and it is already responsive. If needed, constrain line length with the
 **measure table** (`width="100%"` table, empty cell, `width="720"` cell, empty cell): a
 max-width that shrinks on a phone. Use a two-column layout table only when the narrow column
-is truly narrow, and mark it `role="presentation"`. Never nest layout tables more than one deep.
+is truly narrow, and mark it `role="presentation"`. Avoid nesting layout tables more than one deep.
 
 ### 4. Colour is information
 
-Pick one of two palettes per site and stay with it:
+Ideally pick one of two palettes per site and stay with it:
 
 - **System palette:** `<meta name="color-scheme" content="light dark">`, no colour attributes.
   Dark mode for free. Colour comes only from links, `<mark>`, `<meter>` and form controls.
-- **Fixed palette:** `bgcolor` / `text` / `link` on `<body>`, `<font color>` for accents, no
-  color-scheme meta. At most one accent colour plus the link colours. Check contrast (4.5:1).
+- **Fixed palette:** `bgcolor` / `text` / `link` on `<body>`, `<font color>` for accents, avoid
+  color-scheme meta. Aim for one accent colour plus the link colours. Check contrast (4.5:1).
 
-Colour never carries meaning alone: a red dot comes with the word "error".
-
-### 5. Text is the ornament
+### 5. Text can be ornative
 
 Use typographic glyphs, box-drawing in `<pre>`, and `<hr>` for decoration. Put a glyph next to
-a word, never instead of it. Use images only when the image *is* the content.
+a word, not instead of it. Use images only when the image is the content.
 
 ### 6. Every page is a document
 
 It has a title, a date it was last updated, and a way back to the top. It makes sense printed,
-read aloud, and with images off. Its whole source can be read in View Source and understood.
+read aloud, and with images off. Its whole source can be easily read as source code and understood.
 
 ### 7. JavaScript when it earns its place
 
 - First use native behaviour: `<details>`, `<dialog>` + `commandfor`, `popover`, form
   validation, `<details name>` accordions, `hidden="until-found"`.
-- When state is needed, use signals ([plainpanel](https://github.com/Zaffer/plainpanel)):
+- When state is needed, use signals ([alien-signals]([https://github.com/Zaffer/plainpanel](https://github.com/stackblitz/alien-signals))):
   one store, the DOM is a projection, attributes hold paths, not expressions.
 - Script writes HTML attributes and content only: `hidden`, `disabled`, `textContent`,
   `bgcolor`. Never style.
-- ES modules, no build step, no framework. The page must work, minus that one feature, with
-  script off.
+- ES modules good, no build step if it can be avoided, no frameworks needed. The page must work with script off.
 
 ### 8. Weight
 
-A page should fit in the first network round trip: **under 14 KB** of HTML. No web fonts, no
-analytics, no third-party requests, no cookies.
+A page should fit in the first network round trip: **under 14 KB** of HTML.
 
 ### 9. Write like a person
 
 Short declarative sentences. Real dates, real numbers, real names. No "empower", "seamless",
 "unlock", "leverage", "cutting-edge", "solutions". No hero, no cards, no testimonials, no call
-to action. Say what the thing is and what it does.
+to action. Be direct about what the thing is and describe what it does. Use Standard Technical English as a baseline.
 
 ### 10. Validate, knowingly
 
 The W3C validator flags obsolete features as errors. We accept those errors, and only those:
-each obsolete feature used must be on the *living* list. Everything else validates clean.
+each obsolete feature used must be on the living list. Everything else validates clean.
 
 ## What is here
 
