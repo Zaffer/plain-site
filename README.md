@@ -11,42 +11,40 @@ uses no CSS at all.
 
 ## Why
 
-These are opinions, not laws. They are the reasons we build this way. Take the ones that help
-you.
+These are opinions, not laws. Use the ones that help you.
 
-**We think CSS is where the web went wrong.** It is a second language on top of HTML, with its
-own cascade, specificity, inheritance, stacking contexts, and a thousand properties that
-interact. A rule in one place can break something far away. Each framework built to tame it
-adds one more layer. For us, complexity invites chaos and bugs, so we remove the layer.
+**CSS is too complex.** It is a second language on top of HTML, with a cascade, specificity,
+inheritance, stacking contexts, and hundreds of properties that interact. A change in one
+rule can break a different part of the page. Each framework that controls CSS adds one more
+layer. Complexity causes chaos and bugs. We remove the layer.
 
-**The browser already has a stylesheet.** Every browser ships one, and it has had thirty years
-of testing on almost every page ever written. Headings are big, links are blue and underlined,
-lists are indented, tables line up, forms work. A page is legible, accessible and fast before
-you write a line of style. We like to start there.
+**The browser has a stylesheet.** Each browser has a default stylesheet. Almost every web page
+uses it, and it is stable. Headings are large, links are blue with an underline, lists have an
+indent, tables align, and forms operate. The page is legible, accessible and fast before you
+add style. We start there.
 
-**Plain HTML lasts.** A page made of HTML alone opens in almost any browser, on any device. It
-prints. It reads aloud. It needs no build step, no dependency, no framework upgrade and no
-CDN. The oldest pages on the web still render. Many pages built in 2016 do not.
+**Plain HTML is robust.** A page made only of HTML opens in each current browser and on each
+screen size. You can print it, hear it from a screen reader, or read its source. A build
+step, a dependency, a framework and a CDN are not necessary. The oldest pages on the web
+still open. Many pages from 2016 do not.
 
-**Form follows function.** We like a page where each element does a job, and where decoration
-also carries information. The look then comes from the structure, and the structure comes
-from the content.
+**Form follows function.** Each element on the page does a job. Decoration also gives
+information. The appearance comes from the structure, and the structure comes from the
+content. Less code is better.
 
-**90s practicality, Japanese simplicity.** Our models are the early web, and the Japanese web
-that kept its habits. They put content first: dense, scannable text, dated update logs, link
-lists, a table where a table helps, typographic glyphs (■ ※ 【】 ▲) in place of icons and
-images. Pages built that way load at once and still work.
+**90s practicality, Japanese simplicity.** The early web put content first. Many Japanese
+sites still do. They use dense text, dated update logs, link lists, and a table where a table
+helps. They use typographic glyphs (■ ※ 【】 ▲) as an alternative to icons. These pages load
+quickly and still open.
 
-**AI slop all looks the same.** Generated websites have converged on one look: a hero banner,
-a gradient, three feature cards with rounded corners and icons, an Inter or system sans,
-"Empower your workflow", a testimonial carousel, a call to action. A language model is not
-likely to produce a page in Times New Roman with blue underlined links, `<font>` tags, a
-bordered table, and a dated changelog. For us, that is the point. A plain page shows that a
-person chose each element on purpose.
+**Human work is a positive signal.** Most generated websites have the same appearance: a hero
+banner, a gradient, three feature cards, a sans-serif font, and a call to action. A language
+model does not usually make a page with Times New Roman, blue links, `<font>` tags, a
+bordered table. A plain page shows that didn't just go the AI slop route.
 
-**A start, not a uniform.** If every site built this way looked the same, that would be one
-more template. Use the ideas that fit your project and leave the rest. Then add your own
-taste: your colours, your glyphs, your voice.
+**A start, not a uniform.** If all plain sites have the same appearance, they become one more
+template. Use the ideas that are applicable to your project. Ignore the others. Add your own
+colours, glyphs and voice.
 
 ## The guide (draft)
 \[ defer to MANIFESTO.md for ultimate opinion \]
