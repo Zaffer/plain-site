@@ -1,14 +1,13 @@
 # Vocabulary: everything HTML can draw without CSS
 
-This is the full toolkit. Every item is HTML: an element, an attribute, a meta tag, or a DOM
+This is the starter toolkit. Every item is HTML: an element, an attribute, a meta tag, or a DOM
 property. None of it is CSS.
 
 **How it was checked.** Each feature was rendered in Chrome 155 (Blink) and its computed
 result read back. [examples/probe.html](../examples/probe.html) repeats 47 of these checks
 automatically: open it in Firefox and Safari to confirm them there. The *living* obsolete
 features are not browser leftovers. The WHATWG HTML standard, §15 "Rendering", still
-**requires** browsers to render them, attribute by attribute. That is why they work in every
-engine, and why they will keep working: removing them would break millions of pages.
+**requires** browsers to render them, attribute by attribute.
 
 **Status words used below**
 
@@ -17,7 +16,7 @@ engine, and why they will keep working: removing them would break millions of pa
 | conforming | Current HTML. The validator accepts it. |
 | living | Obsolete for authors (the validator complains), but the spec requires browsers to render it. Safe to use. |
 | trap | Works, but has a real cost. Read the note. |
-| dead | Does nothing in current browsers. Never use. |
+| dead | Does nothing in current browsers. No reason to use it. |
 
 ---
 
@@ -95,13 +94,6 @@ use Chinese glyph forms) and makes `<q>` use 「」. Always set `<html lang>`.
 | gauge | `<meter low high optimum value>`: green / yellow / red chosen by the browser | conforming |
 | image | `background` on `body`, `table`, `tr`, `td`, `th` | living |
 | ticker | `<marquee bgcolor>` | living, trap |
-
-**The legacy colour parser.** All colour attributes use the spec's *rules for parsing a
-legacy colour value*. It accepts CSS names (`crimson`, `rebeccapurple`), `#rgb`, `#rrggbb`,
-hex **without** `#` (`ff6600`), and any other string: non-hex characters become `0`, the string
-is split into three equal parts, and each part is cut to two digits. So every word is a colour.
-Measured: `chucknorris` → rgb(192, 0, 0), `sick` → rgb(0, 192, 0), `crap` → rgb(192, 160, 0),
-`ninja` → rgb(0, 0, 160). Fun, but always write `#rrggbb`.
 
 ## 5. Layout
 
@@ -187,7 +179,7 @@ Text is free, scales, copies, and survives with styles off.
 ※                    note
 → ← ↑ ↓ ▲ ▼ ▶ ◀      direction; ▲ top
 ・ ｜ ― …            separators
-✓ ✗ ⏻ ⏸ ⏹ ↺ ⓘ ☾ ☀    actions and states (glyph next to a word, never alone)
+✓ ✗ ⏻ ⏸ ⏹ ↺ ⓘ ☾ ☀    actions and states (best next to a word, not alone)
 ─ │ ┌ ┐ └ ┘ ├ ┤ ┬ ┴ ┼   box-drawing in <pre>
 ```
 
@@ -222,9 +214,12 @@ Tested in Chrome 155: these do nothing. They parse as `HTMLUnknownElement` or ar
 
 ## 10. Grey areas
 
-- **SVG presentation attributes** (`fill="red"`) are attributes, like `bgcolor`. Inline SVG is
-  allowed for images that are content (a diagram, a logo), never for page decoration.
+These are our calls. Yours can differ.
+
+- **SVG presentation attributes** (`fill="red"`) are attributes, like `bgcolor`. We use inline
+  SVG for images that are content (a diagram, a logo), and not for page decoration.
 - **Media queries in HTML** (`<meta name="theme-color" media="(prefers-color-scheme: dark)">`,
-  `<source media>`) use CSS media-query syntax inside an HTML attribute. Allowed: they choose
-  content, not style.
-- **Reading computed style in tests** (as `probe.html` does) is fine. Pages never write it.
+  `<source media>`) use CSS media-query syntax inside an HTML attribute. We use them: they
+  choose content, not style.
+- **Reading computed style in tests** (as `probe.html` does) is fine. Our pages do not write
+  it.
