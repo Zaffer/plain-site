@@ -125,17 +125,14 @@ printed, read aloud, and with images off. A person can read its source and under
 A page that fits in the first network round trip feels instant. That is about **14 KB** of
 HTML. It is a target, not a limit.
 
-### 9. Write like a person
+### 9. Write plainly
 
-Short declarative sentences. Real dates, real numbers, real names. Say what the thing is and
-what it does. We avoid marketing words ("empower", "seamless", "unlock", "leverage",
-"cutting-edge", "solutions") and marketing furniture (hero, cards, testimonials, call to
-action). Simplified Technical English is a good baseline. The voice is yours.
+Short declarative sentences. Say what something is and what it does. Avoid marketing words and marketing elements. Always ruthlessly start by using ASD-STE100 Simplified Technical English as first draft.
 
 ### 10. Validate, knowingly
 
 The W3C validator flags obsolete features as errors. We accept those errors when the feature
-is on the living list, and we fix the others.
+is on the living list, and we fix the others. Ideally no errors if it can be done.
 
 ## What is here
 

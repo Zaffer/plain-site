@@ -2,25 +2,26 @@
 - minimalism and simplicity
 - 90s practicality
 - strictly no CSS, like absolutely zero
-- harness attributes and meta tags that give form and color without stylesheets
+- harness the attributes and meta tags that give form and colour without stylesheets
 - leverage plain HTML to the maximum
 - rely on the browser's rendering defaults
 - low complexity to avoid chaos and bugs
-- low-tech which just works where that's all that's needed
-- supported broadly but without compromising to outdated or irrelevantt browsers
-- any screen size works automatically without customisation unless necessary
-- instant ground truth reactivity to any interaction
-- visible feedback on any processing including requests, loading, pending, failures, etc.
-- latest stable javascript best practices for state management and functionality where appropriate
+- low-tech that just works, wherever that is all that's needed
+- broad browser support, without compromising for outdated or irrelevant browsers
+- any screen size works automatically, with customisation only where necessary
+- instant reactivity to any interaction, always showing the ground truth
+- visible feedback on any processing: requests, loading, pending, failures, etc.
+- latest stable JavaScript best practices for state management and functionality, where appropriate
 - signals for static state and native observables for time-based state
-- built and tested for current Chromium, public sites must also work in for Safari
-- content legible if printed as is or even if just viewing the HTML itself
-- user experience and user interaction must be effortless and intuitive
-- native controls for their intended purpose, based on physical intuition
+- built and tested for current Chromium; public sites must also work in Safari
+- content legible when printed as is, or even when just reading the HTML itself
+- user experience and interaction must be effortless and intuitive
+- native controls used for their intended purpose, based on physical intuition
 - each button does one thing
-- only essential dependencies and 14600 bytes compressed if doable for TCP optimisation
-- follow standards where sensical with explicit exceptions
-- glyphs and emoji next to words where useful to reduce cognitive load
+- only essential dependencies
+- under 14600 bytes compressed where doable, to fit the first TCP round trip
+- follow standards where sensible, with explicit exceptions
+- glyphs and emoji next to words, where useful, to reduce cognitive load
 - less is more, and in general the less actual code the better
-- write artisanal code has if crafted by a human being deliberate with every line
+- write artisanal code, as if crafted by a human being deliberate with every line
 - positive signal from human craftedness, versus artificially intelligent generation
