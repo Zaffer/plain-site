@@ -25,3 +25,5 @@
 - less is more, and in general the less actual code the better
 - write artisanal code, as if crafted by a human being deliberate with every line
 - positive signal from human craftedness, versus artificially intelligent generation
+- do not use javascript in lieu of CSS
+- apply common sense and use this guide as inspiration not hard rules, so if you must use some simple CSS to make something work functionally than just do it purpsefully
